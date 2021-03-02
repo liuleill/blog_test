@@ -36,22 +36,22 @@ Brendan Eich被指定为这种"简化版Java语言"的设计师。
 "Java（对Javascript）的影响，主要是把数据分成基本类型（primitive）和对象类型（object）两种，比如字符串和字符串对象，以及引入了Y2K问题。这真是不幸啊。"
 把基本数据类型包装成对象，这样做是否可取，这里暂且不论。Y2K问题则是直接与Java有关。根据设想，Date.getYear()返回的应该是年份的最后两位：
 ```
+```
 　　var date1 = new Date(1999,0,1);
-
 　　var year1 = date1.getYear();
-
 　　alert(year1); // 99
-
+```
 但是实际上，对于2000年，它返回的是100！
 
-`
+```
 　　var date2 = new Date(2000,0,1);
 　　var year2 = date2.getYear();
 　　alert(year2); // 100
-`
-
+```
+```
 如果用这个函数生成年份，某些网页可能出现"19100"这样的结果。这个问题完全来源于Java，因为Javascript的日期类直接采用了java.util.Date函数库。Brendan Eich显然很不满意这个结果，这导致后来不得不添加了一个返回四位数年份的Date.getFullYear()函数。
-如果不是公司的决策，Brendan Eich绝不可能把Java作为Javascript设计的原型。作为设计者，他一点也不喜欢自己的这个作品：
+如果不是公司的决策，Brendan Eich绝不可能把Java作为Javascript设计的原型。作为设计者，他一点也不喜欢自己的这个作品.
+```
 ### 3.JavaScript的10个设计缺陷
 ##### a.不适合开发大型程序
 Javascript没有名称空间（namespace），很难模块化；没有如何将代码分布在多个文件的规范；允许同名函数的重复定义，后面的定义可以覆盖前面的定义，很不利于模块化加载。
