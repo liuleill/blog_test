@@ -7,6 +7,7 @@ JavaScript是甲骨文公司的注册商标。Ecma国际以JavaScript为基础�
 `
 
 ### 2.JavaScript的诞生记
+```
 网页脚本语言到底是什么语言？网景公司当时有两个选择：一个是采用现有的语言，比如Perl、Python、Tcl、Scheme等等，允许它们直接嵌入网页；另一个是发明一种全新的语言。
 这两个选择各有利弊。第一个选择，有利于充分利用现有代码和程序员资源，推广起来比较容易；第二个选择，有利于开发出完全适用的语言，实现起来比较容易。
 到底采用哪一个选择，网景公司内部争执不下，管理层一时难以下定决心。
@@ -34,6 +35,7 @@ Brendan Eich被指定为这种"简化版Java语言"的设计师。
 他说：
 "Java（对Javascript）的影响，主要是把数据分成基本类型（primitive）和对象类型（object）两种，比如字符串和字符串对象，以及引入了Y2K问题。这真是不幸啊。"
 把基本数据类型包装成对象，这样做是否可取，这里暂且不论。Y2K问题则是直接与Java有关。根据设想，Date.getYear()返回的应该是年份的最后两位：
+```
 　　var date1 = new Date(1999,0,1);
 
 　　var year1 = date1.getYear();
@@ -115,22 +117,15 @@ alert("10"+1); // 101
 NaN是一种数字，表示超出了解释器的极限。它有一些很奇怪的特性：
 ```
 NaN === NaN; //false
-
-　　NaN !== NaN; //true
-
-　　alert( 1 + NaN ); // NaN
+NaN !== NaN; //true
+alert( 1 + NaN ); // NaN
 ```
 与其设计NaN，不如解释器直接报错，反而有利于简化程序。
 ##### h. 数组和对象的区分
 由于Javascript的数组也属于对象（object），所以要区分一个对象到底是不是数组，相当麻烦。Douglas Crockford的代码是这样的：
 ```
-　if ( arr &&
-　　　　typeof arr === 'object' &&
-　　　　typeof arr.length === 'number' &&
-　　　　!arr.propertyIsEnumerable('length')){
-
+　if ( arr &&typeof arr === 'object' && typeof arr.length === 'number' && !arr.propertyIsEnumerable('length')){
 　　　　alert("arr is an array");
-
 　　}
 ```
 
@@ -138,21 +133,13 @@ NaN === NaN; //false
 ==用来判断两个值是否相等。当两个值类型不同时，会发生自动转换，得到的结果非常不符合直觉。
 ```
 　"" == "0" // false
-
 　　0 == "" // true
-
 　　0 == "0" // true
-
 　　false == "false" // false
-
 　　false == "0" // true
-
 　　false == undefined // false
-
 　　false == null // false
-
 　　null == undefined // true
-
 　　" \t\r\n" == 0 // true
 ```
 因此，推荐任何时候都使用"==="（精确判断）比较符。
@@ -160,14 +147,11 @@ NaN === NaN; //false
 Javascript有三种基本数据类型：字符串、数字和布尔值。它们都有相应的建构函数，可以生成字符串对象、数字对象和布尔值对象。
 ```
 　new Boolean(false);
-
-　　new Number(1234);
-
-　　new String("Hello World");
+　new Number(1234);
+　new String("Hello World");
 ```
 与基本数据类型对应的对象类型，作用很小，造成的混淆却很大。
 ```
 alert( typeof 1234); // number
-
-　　alert( typeof new Number(1234)); // object
+alert( typeof new Number(1234)); // object
 ```
