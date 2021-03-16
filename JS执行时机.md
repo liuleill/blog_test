@@ -29,3 +29,14 @@ for(let i=0;i<6;i++){
 
 ## 3.除了使用 for let 配合，还有什么其他方法可以打印出 0、1、2、3、4、5
 
+```javascript
+let i
+for(i=0;i<6;i++){
+!function (i){
+     setTimeout(()=>{
+        console.log(i)
+     },0)   
+}(i)
+}
+```
+
